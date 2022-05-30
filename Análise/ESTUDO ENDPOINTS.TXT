@@ -1,0 +1,110 @@
+(1) /POST             /usuario/login
+
+request body
+{
+    "email": "",
+    "senha": "",
+}
+
+response
+{
+    "id": 0,
+    "email": "",
+    "nome":
+}
+
+
+(2) /POST           /filme
+
+request body
+{
+    "id": 1,
+    "nome": "",
+    "sinopse": "",
+    "avaliacao": "0.0",
+    "lancamento": "2022-01-01",
+    "disponivel": "true",
+    "imagem": "",
+    "usuario": ""
+}
+
+response (200)
+ {
+
+    "id": 1,
+    "nome": "",
+    "sinopse": "",
+    "avaliacao": "0.0",
+    "lancamento": "2022-01-01",
+    "disponivel": "true",
+    "imagem": "",
+    "usuario": ""
+  
+}
+
+(3) /PUT        /filme/:id
+
+request body
+{
+    "id": 1,
+    "nome": "",
+    "sinopse": "",
+    "avaliacao": "0.0",
+    "lancamento": "2022-01-01",
+    "disponivel": "true",
+    "imagem": "",
+    "usuario": ""
+}
+
+response (204)
+
+--sem conteudo
+
+(4)         /DELETE       /filme/:id
+
+response (204)
+
+(5)   /GET        /filme
+
+response (200)
+[
+    { 
+    "id": 1,
+    "nome": "",
+    "avaliacao": "0.0",
+    "lancamento": "2022-01-01",
+    "disponivel": "true",
+    "usuario": ""
+    }
+]
+
+(6) /GET      /filme/busca?nome=xx
+
+response (200)
+[
+    { 
+    "id": 1,
+    "nome": "",
+    "avaliacao": "0.0",
+    "lancamento": "2022-01-01",
+    "disponivel": "true",
+    "usuario": ""
+    }
+]
+
+(7) /GET        /filme/:id
+
+response (200)
+
+   {
+    "id": 1,
+    "nome": "",
+    "sinopse": "",
+    "avaliacao": "0.0",
+    "lancamento": "2022-01-01",
+    "disponivel": "true",
+    "imagem": "",
+    "usuario": ""
+}
+
+
