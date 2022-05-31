@@ -8,11 +8,12 @@ server.post('/usuario/login' , async (req, resp) =>{
         const {email,senha} = req.body;
         const resposta= await login(email, senha);
 
-        if(!resposta) throw new Error("credenciais inválidas");
+        if(!resposta) throw new Error("Email ou senha inválidos");
 
         resp.send(resposta)
     } catch(err){
-        resp.status(400).send({
+        resp.status(404).send({
+            
             erro: err.message
         });
     }
