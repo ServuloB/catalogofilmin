@@ -75,3 +75,11 @@ export async function alterarFilme(id, filme){
 }
 
 
+export async function adicionarImagem(imagem,id){
+  const comando= `
+  UPDATE tb_filme 
+    SET img_filme     =?
+  WHERE id_filme = ?`;
+  const [resposta]= await con.query(comando,[imagem,id])
+  return resposta.affectedRows;
+}

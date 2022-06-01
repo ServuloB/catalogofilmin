@@ -1,9 +1,10 @@
 import { Router } from "express";
 import { con } from "../repository/connection.js";
-import { cadastrarFilme, buscarfilmes, buscarfilmeId, buscarfilmeNome, removerFilme, alterarFilme, } from "../repository/filmeRepository.js";
-
+import { cadastrarFilme, buscarfilmes, buscarfilmeId, buscarfilmeNome, removerFilme, alterarFilme, adicionarImagem, } from "../repository/filmeRepository.js";
+import multer from 'multer'
 
 const server= Router();
+const upload= multer({dest:'storage/capasFilmes' })
 
 server.post('/filme', async (req, resp) =>{
     try{
@@ -111,6 +112,23 @@ server.put('/filme/:id', (req, resp)=>{
         erro:err.message
     })
 }
+})
+
+server.put('/filme/:id/imagem',upload.single('capa'), async (req, resp)=>{
+    try{
+        const { id } = req.params;
+        const imagem= req.file.path;
+        const resposta= await adicionarImagem(imagem,id);
+        if(resposta != 1)
+         throw new Error('A imagem não pode ser salva')
+    
+         resp.status(204).send()
+
+    } catch(err){
+        resp.status(404).send({
+            erro: err.message
+        })
+    }
 })
 
 export default server
